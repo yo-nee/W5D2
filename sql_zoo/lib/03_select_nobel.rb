@@ -25,7 +25,7 @@ def prizes_from_1950
   # Display Nobel prizes for 1950.
   execute(<<-SQL)
   SELECT 
-   yr, subject, winner
+    *
   FROM
     nobels
   WHERE
@@ -88,11 +88,23 @@ def presidential_prizes
   # Show all details of the presidential winners: ('Theodore Roosevelt',
   # 'Woodrow Wilson', 'Jimmy Carter')
   execute(<<-SQL)
+    SELECT
+      *
+    FROM
+      nobels
+    WHERE
+      winner IN ('Theodore Roosevelt', 'Woodrow Wilson', 'Jimmy Carter');
   SQL
 end
 
 def nobel_johns
   # Show the winners with first name John
   execute(<<-SQL)
+    SELECT
+      winner
+    FROM
+      nobels
+    WHERE
+      winner LIKE 'John%';
   SQL
 end
